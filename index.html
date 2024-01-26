@@ -35,11 +35,37 @@
         </div>
 
     </header>
+    <section class="fiter">
+        <div class="filter__container">
+            <form class="filter__form" id="filter__form">
+                <div class="filter__field filter__field--title">
+                    <input value="" id="title" name="title" type="text" placeholder="search by title">
+                </div>
+                <div class="filter__field filter__field--select">
+                    <select name="state">
+                        <option value="all">all</option>
+                        <option value="open">open</option>
+                        <option value="done">done</option>
+                    </select>
+                </div>
+                <div class="filter__field filter__field--select">
+                    <select name="urgency">
+                        <option value="all">all</option>
+                        <option value="hight">hight</option>
+                        <option value="normal">normal</option>
+                        <option value="low">low</option>
+                    </select>
+                </div>
+                <div class="filter__action">
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+        </div>
 
-    <div>
-
-    </div>
+    </section>
+  
 
     <script src="./script/script.js"></script>
+    <script src="./script/filter.js"></script>
 </body>
 </html>
