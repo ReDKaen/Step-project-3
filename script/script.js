@@ -5,11 +5,13 @@ class Header {
     this.logForm = document.querySelector(".header__log-menu__form");
     this.createBtn = document.querySelector(".header-btn-create-visit")
     this.modalForm = document.querySelector(".header__modal-form__wrraper")
+    this.closeModalBtn = document.querySelector(".header__modal-form__close-btn")
+    this.modalFormWrraper = document.querySelector(".header__modal-form__wrraper")
 
     this.logBtn.addEventListener("click", this.toggleLogMenu.bind(this));
     this.logForm.addEventListener("submit", this.handleLoginForm.bind(this));
     this.createBtn.addEventListener("click", this.createModalWindow.bind(this));
-
+    this.closeModalBtn.addEventListener("click", this.closeModalWindow.bind(this))
   }
 
   toggleLogMenu() {
@@ -29,6 +31,10 @@ class Header {
     this.modalForm.style.display = this.modalForm.style.display === "none" ? "flex" : "none";
   }
 
+  closeModalWindow(){
+    this.modalFormWrraper.style.display = "none"
+  }
+
   async login(email, password) {
     try {
       const response = await fetch("https://ajax.test-danit.com/api/v2/cards/login", {
@@ -38,17 +44,22 @@ class Header {
         },
         body: JSON.stringify({ email, password })
       });
-
-      const token = await response.text();
       if (response.ok) {
+        const token = await response.text();
         this.updateUIOnSuccessfulLogin();
-      }
-      if (response.ok){
-        
+        this.saveTokenToLocalStorage(token)
+      } else {
+        console.error('Login failed:', response.status);
       }
     } catch (error) {
       console.error('Error:', error);
     }
+  }
+  saveTokenToLocalStorage(token){
+    localStorage.setItem("token", token)
+  }
+  loadTokenToLoacalStorage(){
+    return localStorage.getItem("token")
   }
   updateUIOnSuccessfulLogin() {
     this.logMenu.style.display = "none"
@@ -58,4 +69,8 @@ class Header {
 }
 
 const header = new Header();
-console.log(header);
+
+const savedToken = header.loadTokenToLoacalStorage();
+if (savedToken) {
+  header.updateUIOnSuccessfulLogin();
+}

@@ -66,6 +66,37 @@
 .header__modal-form__wrraper{
     display: flex;
     flex-direction:column ;
+    z-index: 1000;
+    position: absolute;
+    height: 300px;
+    width: 500px;
+    background-color: greenyellow;
+    border-radius: 30px;
+    padding: 15px 10px 15px 10px;
+    right: 30%;
+    top: 30%;
     display: none;
 }
 
+.header__modal-form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.header__modal-form button{
+    width: 90px;
+    height: 25px;
+    border-radius: 30px;
+    border: none;
+    background-color: aquamarine;
+}
+
+.header__modal-form__close-btn{
+    margin-top: 5px;
+    width: 90px;
+    height: 25px;
+    border-radius: 30px;
+    border: none;
+    background-color: aquamarine;
+}

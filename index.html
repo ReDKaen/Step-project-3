@@ -24,14 +24,27 @@
 
         <div class="header__modal-form__wrraper">
             <form action="" class="header__modal-form">
-                <select name="" id="">
+                <span>Виберіть лікаря</span>
+                <select name="doctor" id="">
                     <option value="1">Кардіолог</option>
                     <option value="2">Стоматолог</option>
                     <option value="3">Терапевт</option>
                 </select>
-                <input type="text">
+                <p>Мета візиту</p>
+                <input type="text" name="visit" id="">
+                <p>Короткий опис візиту</p>
+                <input type="text" name="description" id="">
+                <p>Терміновість</p>
+                <select name="urgency" id="">
+                    <option value="1">Звичайна</option>
+                    <option value="2">Пріорітетна</option>
+                    <option value="3">Невідкладна</option>
+                </select>
+                <p>ПІБ</p>
+                <input type="text" name="inicial" id="">
                 <button>Створити</button>
             </form>
+            <button class="header__modal-form__close-btn">Закрити</button>
         </div>
 
     </header>
