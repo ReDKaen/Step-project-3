@@ -68,6 +68,23 @@ class Header {
   }
 }
 
+class Modal extends Header{
+  constructor() {
+    super(t);
+    this.modalForm = document.querySelector(".header__modal-form__wrapper");
+    this.closeModalBtn = document.querySelector(".header__modal-form__close-btn");
+
+    this.closeModalBtn.addEventListener("click", this.closeModalWindow.bind(this));
+  }
+  createModalWindow() {
+    this.modalForm.style.display = this.modalForm.style.display === "none" ? "flex" : "none";
+  }
+
+  closeModalWindow() {
+    this.modalFormWrapper.style.display = "none";
+  }
+}
+
 const header = new Header();
 
 const savedToken = header.loadTokenToLoacalStorage();
