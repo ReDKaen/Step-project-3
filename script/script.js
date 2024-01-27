@@ -70,7 +70,7 @@ class Header {
 
 class Modal extends Header{
   constructor() {
-    super(t);
+    super();
     this.modalForm = document.querySelector(".header__modal-form__wrapper");
     this.closeModalBtn = document.querySelector(".header__modal-form__close-btn");
 
