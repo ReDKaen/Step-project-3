@@ -71,21 +71,60 @@ class Header {
 class Modal extends Header{
   constructor() {
     super();
-    this.modalForm = document.querySelector(".header__modal-form__wrapper");
+    this.modalFormWrapper = document.querySelector(".header__modal-form__wrapper");
+    this.modalForm = document.querySelector(".header__modal-form")
     this.closeModalBtn = document.querySelector(".header__modal-form__close-btn");
-
+    this.createCardBtn = document.querySelector(".header__modal-form__create-btn");
+  
     this.closeModalBtn.addEventListener("click", this.closeModalWindow.bind(this));
+    this.createCardBtn.addEventListener("click", this.createCard.bind(this));
   }
+  
   createModalWindow() {
-    this.modalForm.style.display = this.modalForm.style.display === "none" ? "flex" : "none";
+    this.modalFormWrapper.style.display = this.modalFormWrapper.style.display === "none" ? "flex" : "none";
   }
-
+  
   closeModalWindow() {
-    this.modalFormWrapper.style.display = "none";
+    this.modalFormWrapper.style.display = this.modalFormWrapper.style.display === "flex" ? "none" : "flex";
   }
+  
+  createCard(event){
+    event.preventDefault()
+
+    const title = this.modalForm.querySelector("[]")
+
+    this.postCard()
+  }
+  
+  async postCard(title, description, doctor, bp, age, weight) {
+    try{
+      const response = await fetch("https://ajax.test-danit.com/api/v2/cards",{
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          title,
+          description,
+          doctor,
+          bp,
+          age,
+          weight,
+        })
+      })
+      if(response.ok){
+        const card = await response.json()
+        console.log(card);
+      }
+    } catch(error){
+      console.error("error", error)
+    }
+  } 
 }
 
 const header = new Header();
+const modal = new Modal()
 
 const savedToken = header.loadTokenToLoacalStorage();
 if (savedToken) {
