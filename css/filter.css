@@ -1,0 +1,41 @@
+.filter {
+    margin-top: 10px;
+    background-color: aquamarine;
+    padding: 20px;
+}
+
+.filter__container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.filter__form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filter__field {
+    margin: 10px;
+}
+.filter__field input,
+.filter__field select {
+    font-size: 20px;
+    font-family: Roboto;
+    padding: 8px;
+    width: 150px;
+    box-sizing: border-box;
+}
+
+.filter__action button {
+    padding: 10px;
+    font-size: 20px;
+    background-color: greenyellow;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.filter__action button:hover {
+    background-color: rgb(19, 171, 120);
+}
