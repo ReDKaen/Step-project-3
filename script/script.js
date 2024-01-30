@@ -15,7 +15,7 @@ class Header {
   }
 
   toggleLogMenu() {
-    this.logMenu.style.display = this.logMenu.style.display === "flex" ? "none" : "flex";
+    this.logMenu.style.display = this.logMenu.style.display === "none" ? "flex" : "none";
   }
 
   handleLoginForm(event) {
